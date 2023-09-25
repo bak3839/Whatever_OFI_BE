@@ -95,6 +95,7 @@ public class CoordinatorController {
         coordinatorDetailRes.setRequest_count(coordinatorMyPageRes.getRequest_count());
         coordinatorDetailRes.setTotal_like(coordinatorMyPageRes.getTotal_like());
         coordinatorDetailRes.setUser_board_id(like_board_id);
+        coordinatorDetailRes.setSns_url(coordinatorMyPageRes.getSns_url());
         coordinatorDetailRes.setBoards(boards);
 
         return coordinatorDetailRes;

@@ -12,16 +12,18 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.listener.ChannelTopic;
 import org.springframework.messaging.handler.annotation.Header;
 import org.springframework.messaging.handler.annotation.MessageMapping;
+import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 @Slf4j
 @RequiredArgsConstructor
 @Controller
+@CrossOrigin(origins = "http://localhost:3000", allowCredentials = "true")
 public class ChatController {
 
+    private final SimpMessagingTemplate messagingTemplate;
     private final ChatService chatService;
-    private final RedisTemplate redisTemplate;
-    private final ChannelTopic channelTopic;
 
     /**
      * websocket "/pub/chat/message"로 들어오는 메시징을 처리한다.
@@ -29,7 +31,6 @@ public class ChatController {
     @MessageMapping("/chat/message")
     public void message(ChatMessage message) {
         Long chatId = chatService.saveMessage(message);
-        System.out.println(message.getRoomId());
-        redisTemplate.convertAndSend( "/sub/chatroom/"+ message.getRoomId(), SendChatMessage.of(chatId, message));
+        messagingTemplate.convertAndSend( "/sub/chatroom/"+ message.getRoomId(), SendChatMessage.of(chatId, message));
     }
 }

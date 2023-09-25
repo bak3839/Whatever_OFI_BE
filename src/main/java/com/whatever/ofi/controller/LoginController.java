@@ -25,6 +25,7 @@ public class LoginController {
 
     @PostMapping("/login") // 여기서 사용자, 코디네이터 id 값 넘기기
     public String login(@RequestBody LoginRequest loginRequest, HttpSession session) {
+
         String token = userService.login(loginRequest);
         String type;
         Long id;

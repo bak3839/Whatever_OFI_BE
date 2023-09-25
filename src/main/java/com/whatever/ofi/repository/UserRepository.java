@@ -93,4 +93,10 @@ public class UserRepository {
                 .setParameter("nickname", nickname)
                 .getSingleResult();
     }
+
+    public List<User> findNickname(String nickname) {
+        return em.createQuery(" select u from User u where u.nickname = :nickname ", User.class)
+                .setParameter("nickname", nickname)
+                .getResultList();
+    }
 }

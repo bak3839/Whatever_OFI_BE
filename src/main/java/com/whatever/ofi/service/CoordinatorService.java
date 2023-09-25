@@ -44,7 +44,7 @@ public class  CoordinatorService {
     }
 
     public String login(LoginRequest loginRequest) {
-
+        String type = "cordinator";
         // 1. Id가 틀린 경우
         if(coordinatorRepository.findByEmail(loginRequest.getEmail()).isEmpty()) return "Email Not Found";
 
@@ -56,7 +56,9 @@ public class  CoordinatorService {
 
         String nickname = coordinator.getNickname();
 
-        return Util.createJwt(nickname, secretKey);
+        Long id = coordinator.getId();
+
+        return Util.createJwt(type, id, nickname, secretKey);
     }
 
     // 코디 네이터 마이 페이지

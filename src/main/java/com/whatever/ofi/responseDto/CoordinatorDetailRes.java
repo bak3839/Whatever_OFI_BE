@@ -15,6 +15,8 @@ public class CoordinatorDetailRes {
 
     private String content;
 
+    private String sns_url;
+
     private int total_like;
 
     private int request_count;

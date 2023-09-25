@@ -43,6 +43,7 @@ public class UserService {
     }
 
     public String login(LoginRequest loginRequest) {
+        String type = "user";
 
         // 1. Id가 틀린 경우
         if(userRepository.findByEmail(loginRequest.getEmail()).isEmpty()) return "Email Not Found";
@@ -55,7 +56,9 @@ public class UserService {
 
         String nickname = user.getNickname();
 
-        return Util.createJwt(nickname, secretKey);
+        Long id = user.getId();
+
+        return Util.createJwt(type, id, nickname, secretKey);
     }
 
     public Long findId(String email) {

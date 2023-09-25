@@ -54,7 +54,9 @@ public class ChatService {
     @Transactional
     public Long saveMessage(ChatMessage message) {
         ChatRoom chatRoom = findRoomId(message.getRoomId());
-        User sender = getUserByNickname(message.getSender());
+        List<User> findUser = userRepository.findNickname(message.getSender());
+        User sender = findUser.isEmpty() ? null : findUser.get(0);
+
         String _message = message.getMessage();
         LocalDateTime createdAt = message.getCreateAt();
         Coordinator send = null;
@@ -103,7 +105,7 @@ public class ChatService {
         User fiter = getUserByNickname(myNickname);
         Coordinator outer = getCoordinatorByNickname(yourNickname);
         ChatRoom chatRoom = findRoomId(roomUUID);
-        reduceReadCountOfChats(chatRoom, fiter);
+        //reduceReadCountOfChats(chatRoom, fiter);
         return MessagesResponse.of(outer, chatRoom);
     }
 
@@ -122,13 +124,19 @@ public class ChatService {
     }
 
     public List<ChatRoom> getChatingRooms(String nickname){
-        User user = getUserByNickname(nickname);
+        List<User> findUser = userRepository.findNickname(nickname);
+        User user = findUser.isEmpty() ? null : findUser.get(0);
+
         Coordinator coordinator = null;
-        List<ChatRoom> chatRoom = chatRoomRepository.findChatRoomsByUser(user);
-        if (chatRoom == null){
+        List<ChatRoom> chatRoom;
+
+        if (user == null){
             coordinator = getCoordinatorByNickname(nickname);
             chatRoom = chatRoomRepository.findChatRoomsByCoordinator(coordinator);
+        }else {
+            chatRoom = chatRoomRepository.findChatRoomsByUser(user);
         }
+
         return chatRoom;
     }
 

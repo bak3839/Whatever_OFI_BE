@@ -131,7 +131,7 @@ public class SocialLoginService {
             nickname = coordinatorRepository.findOne(id).getNickname();
         }
 
-        return Util.createJwt(nickname, secretKey);
+        return Util.createJwt("user", 1L,nickname, secretKey);
     }
 
 

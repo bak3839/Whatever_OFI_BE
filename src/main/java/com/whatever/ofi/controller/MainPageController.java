@@ -36,5 +36,4 @@ public class MainPageController {
         return mainPageService.searchCoordinatorMainPage();
     }
 
-
 }
