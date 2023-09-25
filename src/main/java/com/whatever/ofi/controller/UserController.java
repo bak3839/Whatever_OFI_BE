@@ -104,4 +104,9 @@ public class UserController {
     public String editProfile(@RequestBody UserEditRequest dto, HttpSession session) {
         return userService.editProfile(dto, (Long) session.getAttribute("id"));
     }
+
+    @GetMapping("/nickname")
+    public String nickname(HttpSession session) {
+        return userService.findNickname((Long) session.getAttribute("id"));
+    }
 }

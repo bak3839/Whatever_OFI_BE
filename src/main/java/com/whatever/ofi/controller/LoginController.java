@@ -64,14 +64,6 @@ public class LoginController {
         return type;
     }
 
-    /*@PostMapping("/logout")
-    public String logout(HttpSession session) {
-        session.invalidate();
-        // 규민이랑 하기
-
-        return "success";
-    }*/
-
     @GetMapping("/test")
     public String test(HttpSession session) {
 
