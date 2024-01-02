@@ -50,7 +50,7 @@ spring:
             redirect-uri: '{baseUrl}/{action}/oauth2/code/{registrationId}'
             client-authentication-method: POST
           google:
-            client-id: 913247934733-5ubt084h8ohcpngodtvcmvmu4ucn0rtd.apps.googleusercontent.com
+            client-id: "913247934733-5ubt084h8ohcpngodtvcmvmu4ucn0rtd.apps.googleusercontent.com"
             client-secret: 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
             redirect-uri: http://localhost:3000/oauth/google
             scope: profile,email
