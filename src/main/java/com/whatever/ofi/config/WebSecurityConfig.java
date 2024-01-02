@@ -71,6 +71,7 @@ public class WebSecurityConfig {
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
 
+        configuration.addAllowedOrigin("https://remarkable-sable-1db2d2.netlify.app/");
         configuration.addAllowedOrigin("http://localhost:3000");
         configuration.addAllowedHeader("*");
         configuration.addAllowedMethod("*");
