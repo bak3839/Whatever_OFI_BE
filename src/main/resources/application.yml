@@ -30,6 +30,8 @@ spring:
   redis:
     host: redis-11844.c14.us-east-1-2.ec2.cloud.redislabs.com
     port: 11844
+    username: default
+    password: 2PR0pwJjCZHZ2fnDgHROMNOskkLpJsWM
 
   security:
     oauth2:
