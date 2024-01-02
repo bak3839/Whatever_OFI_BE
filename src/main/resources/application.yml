@@ -1,6 +1,6 @@
 spring:
   datasource:
-    url: jdbc:mariadb://klbcedmmqp7w17ik.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/ofi
+    url: jdbc:mariadb://klbcedmmqp7w17ik.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/b0i4m7r04e44gvew
     driver-class-name: org.mariadb.jdbc.Driver
     username: c254kxst2kzj13sp
     password: e0m1rqu9bqv0u4qa
