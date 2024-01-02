@@ -28,8 +28,8 @@ spring:
             enable: true
           trust: smtp.naver.com
   redis:
-    host: svc.sel5.cloudtype.app
-    port: 30873
+    host: redis-11844.c14.us-east-1-2.ec2.cloud.redislabs.com
+    port: 11844
 
   security:
     oauth2:
