@@ -17,14 +17,6 @@ public class EmailAuthService {
 
     private final RedisTemplate<String, String> redisTemplate;
 
-    private final UserRepository userRepository;
-
-    private final CoordinatorRepository coordinatorRepository;
-
-    public void saveData(String key, String value) {
-        redisTemplate.opsForValue().set(key, value);
-    }
-
     public String getData(String key) {
         return redisTemplate.opsForValue().get(key);
     }

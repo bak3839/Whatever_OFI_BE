@@ -54,7 +54,7 @@ public class BoardRepository {
                 .situation((String) result[8])
                 .title((String) result[9])
                 .sns_url((String) result[10])
-                .like_status(!likes.isEmpty())
+                .like_status(likes.isEmpty())
                 .build();
     }
 

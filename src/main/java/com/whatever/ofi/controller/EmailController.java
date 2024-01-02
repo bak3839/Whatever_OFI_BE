@@ -39,16 +39,6 @@ public class EmailController {
 
         emailAuthService.saveDataWithExpiration(email, code, 300);
 
-        Cookie sessionId = new Cookie("JSESSIONID", session.getId());
-        sessionId.setDomain(".sel5.cloudtype.app");
-        sessionId.setPath("/");
-        sessionId.setSecure(false);
-        sessionId.setMaxAge(86400); // 1일
-        sessionId.setHttpOnly(false);
-
-        HttpServletResponse response = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getResponse();
-        response.addCookie(sessionId);
-
         return code;
     }
 
