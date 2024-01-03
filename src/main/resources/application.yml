@@ -1,9 +1,9 @@
 spring:
   datasource:
-    url: jdbc:mariadb://klbcedmmqp7w17ik.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/b0i4m7r04e44gvew
+    url: jdbc:mariadb://ofi-database.cnu4wcuukgh7.ap-northeast-2.rds.amazonaws.com:3306/ofi
     driver-class-name: org.mariadb.jdbc.Driver
-    username: c254kxst2kzj13sp
-    password: e0m1rqu9bqv0u4qa
+    username: admin
+    password: ofi0926!
 
   jpa:
     hibernate:
