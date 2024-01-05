@@ -1,5 +1,6 @@
 package com.whatever.ofi.controller;
 
+import com.whatever.ofi.config.CookieUtil;
 import com.whatever.ofi.requestDto.LoginRequest;
 import com.whatever.ofi.service.CoordinatorService;
 import com.whatever.ofi.service.SocialLoginService;
@@ -46,21 +47,22 @@ public class LoginController {
             type = "user";
         }
 
-        Cookie cookie = new Cookie("token", token);
+//        Cookie cookie = new Cookie("token", token);
+//
+//        cookie.setPath("/");
+//        cookie.setSecure(false);
+//        cookie.setMaxAge(86400); // 1일
+//        cookie.setHttpOnly(true);
 
-        cookie.setPath("/");
-        cookie.setSecure(false);
-        cookie.setMaxAge(86400); // 1일
-        cookie.setHttpOnly(true);
 
-
-        System.out.println(cookie.getValue());
+        //System.out.println(cookie.getValue());
 
         session.setAttribute("id", id);
         session.setAttribute("type", type);
 
         HttpServletResponse response = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getResponse();
-        response.addCookie(cookie);
+        CookieUtil.addCookie(response, "token", token, 86400);
+        //response.addCookie(cookie);
 
         return type;
     }
