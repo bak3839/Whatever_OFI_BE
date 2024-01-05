@@ -17,8 +17,5 @@ public class CustomServletContextListener implements ServletContextListener {
         sessionCookieConfig.setComment("SameSite=None");
     }
 
-    @Bean
-    public ServletListenerRegistrationBean<CustomServletContextListener> servletListenerRegistrationBean() {
-        return new ServletListenerRegistrationBean<>(new CustomServletContextListener());
-    }
+
 }
