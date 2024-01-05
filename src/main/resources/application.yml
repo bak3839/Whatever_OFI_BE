@@ -90,7 +90,7 @@ server:
   servlet:
     session:
       cookie:
-        same-site: none
         secure: false
         http-only: true
         path: /
+        domain: ".ap-northeast-2.compute.amazonaws.com"
