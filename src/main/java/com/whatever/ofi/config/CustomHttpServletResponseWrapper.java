@@ -1,9 +1,13 @@
 package com.whatever.ofi.config;
 
+import org.springframework.context.annotation.Configuration;
+import org.springframework.stereotype.Component;
+
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpServletResponseWrapper;
 
+@Configuration
 public class CustomHttpServletResponseWrapper extends HttpServletResponseWrapper {
     public CustomHttpServletResponseWrapper(HttpServletResponse response) {
         super(response);
