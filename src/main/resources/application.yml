@@ -92,6 +92,6 @@ server:
       cookie:
         same-site: strict
         secure: false
-        domain: .amazonaws.com
+        domain: amazonaws.com
         http-only: true
         path: /
