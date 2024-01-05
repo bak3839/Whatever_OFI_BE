@@ -72,6 +72,7 @@ public class WebSecurityConfig {
         CorsConfiguration configuration = new CorsConfiguration();
 
         configuration.addAllowedOrigin("http://seumu-s3-bucket.s3-website.ap-northeast-2.amazonaws.com/");
+        configuration.addAllowedOrigin("https://remarkable-sable-1db2d2.netlify.app/");
         configuration.addAllowedOrigin("http://localhost:3000");
         configuration.addAllowedHeader("*");
         configuration.addAllowedMethod("*");
