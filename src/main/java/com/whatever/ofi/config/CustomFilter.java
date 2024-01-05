@@ -1,25 +1,38 @@
 package com.whatever.ofi.config;
 
+
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpHeaders;
 import org.springframework.stereotype.Component;
 
 import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.Collection;
 
 @Component
 public class CustomFilter implements Filter {
 
-    private static final String THIRD_PARTY_URI = "/third/party/uri";
+    @Value("${server.servlet.session.cookie.sameSite}")
+    private String sameSitePolicy;
 
     @Override
-    public void doFilter(ServletRequest req, ServletResponse res, FilterChain chain) throws IOException, ServletException {
-        HttpServletRequest request = (HttpServletRequest) req;
-        HttpServletResponse response = (HttpServletResponse) res;
-        if(THIRD_PARTY_URI.equals(request.getRequestURI())) {
-            chain.doFilter(request, new CustomHttpServletResponseWrapper(response));
-        } else {
-            chain.doFilter(request, response);
+    public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
+        chain.doFilter(request, response);
+        addSameSiteCookieAttribute((HttpServletResponse) response);
+    }
+
+    private void addSameSiteCookieAttribute(HttpServletResponse response) {
+        Collection<String> headers = response.getHeaders(HttpHeaders.SET_COOKIE);
+        boolean firstHeader = true;
+        for (String header : headers) {
+            if (firstHeader) {
+                response.setHeader(HttpHeaders.SET_COOKIE, String.format("%s; %s", header, "SameSite=" + sameSitePolicy));
+                firstHeader = false;
+                continue;
+            }
+            response.addHeader(HttpHeaders.SET_COOKIE, String.format("%s; %s", header, "SameSite=" + sameSitePolicy));
         }
     }
 }

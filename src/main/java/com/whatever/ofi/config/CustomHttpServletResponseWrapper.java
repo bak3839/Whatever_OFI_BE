@@ -1,3 +1,4 @@
+/*
 package com.whatever.ofi.config;
 
 import org.springframework.context.annotation.Configuration;
@@ -41,3 +42,4 @@ public class CustomHttpServletResponseWrapper extends HttpServletResponseWrapper
         return builder.toString();
     }
 }
+*/
