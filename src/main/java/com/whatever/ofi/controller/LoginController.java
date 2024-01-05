@@ -51,7 +51,7 @@ public class LoginController {
         cookie.setPath("/");
         cookie.setSecure(false);
         cookie.setMaxAge(86400); // 1일
-        cookie.setHttpOnly(false);
+        cookie.setHttpOnly(true);
 
 
         System.out.println(cookie.getValue());
@@ -97,7 +97,7 @@ public class LoginController {
             cookie.setPath("/");
             cookie.setSecure(false);
             cookie.setMaxAge(86400); // 1일
-            cookie.setHttpOnly(false);
+            cookie.setHttpOnly(true);
 
             System.out.println(cookie.getValue());
 
@@ -138,7 +138,7 @@ public class LoginController {
             cookie.setPath("/");
             cookie.setSecure(false);
             cookie.setMaxAge(86400); // 1일
-            cookie.setHttpOnly(false);
+            cookie.setHttpOnly(true);
 
             System.out.println(cookie.getValue());
 
@@ -179,7 +179,7 @@ public class LoginController {
             cookie.setPath("/");
             cookie.setSecure(false);
             cookie.setMaxAge(86400); // 1일
-            cookie.setHttpOnly(false);
+            cookie.setHttpOnly(true);
 
             System.out.println(cookie.getValue());
 
