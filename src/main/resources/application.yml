@@ -85,3 +85,13 @@ jwt:
 bootpay:
   restapikey: "651149f2e57a7e001dc68830"
   privatekey: "YulwTrn56ggMI3oGXqdyyByynFjfB21ciVOdPy6Q14w="
+
+server:
+  servlet:
+    session:
+      cookie:
+        same-site: none
+        secure: true
+        domain: amazonaws.com
+        http-only: true
+        path: /
