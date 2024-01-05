@@ -90,8 +90,7 @@ server:
   servlet:
     session:
       cookie:
-        same-site: strict
+        same-site: none
         secure: false
-        domain: amazonaws.com
         http-only: true
         path: /
